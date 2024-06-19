@@ -12,14 +12,6 @@ import java.util.Map;
 
 public interface ArticuloManufacturadoService extends BaseService<ArticuloManufacturado, Long> {
     List<ArticuloManufacturadoDetalle> findAllDetalles(Long id);
-    public void changeHabilitado(Long id);
     List<ArticuloManufacturado> getAllHabilitados();
 
-    //Imagenes
-    // Método para obtener todas las imágenes almacenadas
-    ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id);
-    // Método para subir imágenes al sistema
-    ResponseEntity<String> uploadImages(MultipartFile[] files, Long id);
-    // Método para eliminar una imagen por su identificador público y Long
-    ResponseEntity<String> deleteImage(String publicId, Long id);
     List<ArticuloManufacturado> findBySucursalId(Long sucursalId);}

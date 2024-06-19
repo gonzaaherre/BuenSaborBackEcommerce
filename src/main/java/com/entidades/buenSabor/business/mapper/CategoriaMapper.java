@@ -22,14 +22,10 @@ import java.util.stream.Collectors;
 // En este caso, se utiliza el componente "spring" para la inyección de dependencias y se especifican
 // las clases de servicio y mappers que utiliza.
 @Mapper(componentModel = "spring", uses = {SucursalService.class, ArticuloInsumoMapper.class,
-        ArticuloManufacturadoMapper.class, SucursalMapper.class})
-public interface CategoriaMapper extends BaseMapper<Categoria, CategoriaDto,CategoriaCreateDto, CategoriaEditDto> {
+        ArticuloManufacturadoMapper.class})
+public interface CategoriaMapper extends BaseMapper<Categoria, CategoriaDto> {
     // Esta es una instancia estática de la interfaz, que se utiliza para obtener una instancia del Mapper.
     CategoriaMapper INSTANCE = Mappers.getMapper(CategoriaMapper.class);
-
-    // Este método define la transformación de un CategoriaCreateDto a una entidad Categoria.
-    @Mapping(target = "sucursales", source = "idSucursales",qualifiedByName = "getById")
-    Categoria toEntityCreate(CategoriaCreateDto source);
 
 
     //usamos el parametro expression para indicar que vamos a usar un metodo para definir el mapeo

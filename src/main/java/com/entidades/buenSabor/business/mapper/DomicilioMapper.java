@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 @Mapper(componentModel = "spring", uses = {LocalidadService.class})
-public interface DomicilioMapper extends BaseMapper<Domicilio, DomicilioDto, DomicilioCreateDto, DomicilioEditDto> {
+public interface DomicilioMapper extends BaseMapper<Domicilio, DomicilioDto> {
     @Mapping(target = "localidad", source = "idLocalidad",qualifiedByName = "getById")
     Domicilio toEntityCreate(DomicilioCreateDto source);
 

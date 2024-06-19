@@ -11,10 +11,10 @@ import com.entidades.buenSabor.domain.entities.Domicilio;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DomicilioFacadeImp extends BaseFacadeImp<Domicilio, DomicilioDto, DomicilioCreateDto, DomicilioEditDto, Long> implements DomicilioFacade {
+public class DomicilioFacadeImp extends BaseFacadeImp<Domicilio, DomicilioDto,Long> implements DomicilioFacade {
 
 
-    public DomicilioFacadeImp(BaseService<Domicilio, Long> baseService, BaseMapper<Domicilio, DomicilioDto, DomicilioCreateDto, DomicilioEditDto> baseMapper) {
+    public DomicilioFacadeImp(BaseService<Domicilio, Long> baseService, BaseMapper<Domicilio, DomicilioDto> baseMapper) {
         super(baseService, baseMapper);
     }
 }

@@ -3,8 +3,6 @@ package com.entidades.buenSabor.domain.dto.Promocion;
 import com.entidades.buenSabor.domain.dto.BaseDto;
 import com.entidades.buenSabor.domain.dto.Imagen.ImagenDto;
 import com.entidades.buenSabor.domain.dto.PromocionDetalle.PromocionDetalleDto;
-import com.entidades.buenSabor.domain.dto.Sucursal.ShortSucursal;
-import com.entidades.buenSabor.domain.dto.Sucursal.SucursalShortShort;
 import com.entidades.buenSabor.domain.enums.TipoPromocion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +26,6 @@ public class PromocionDto extends BaseDto {
     private String descripcionDescuento;
     private Double precioPromocional;
     private TipoPromocion tipoPromocion;
-    Set<SucursalShortShort> sucursales;
     Set<PromocionDetalleDto> detalles;
     private Boolean habilitado;
     private Set<ImagenDto> imagenes;

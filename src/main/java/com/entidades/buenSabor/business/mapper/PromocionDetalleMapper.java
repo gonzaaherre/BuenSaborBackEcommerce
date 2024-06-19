@@ -2,12 +2,8 @@ package com.entidades.buenSabor.business.mapper;
 
 import com.entidades.buenSabor.business.service.ArticuloService;
 import com.entidades.buenSabor.domain.dto.ArticuloManufacturado.ArticuloManufacturadoCategoriaDto;
-import com.entidades.buenSabor.domain.dto.ArticuloManufacturado.ArticuloManufacturadoDto;
 import com.entidades.buenSabor.domain.dto.Insumo.ArticuloInsumoCategoriaDto;
-import com.entidades.buenSabor.domain.dto.Insumo.ArticuloInsumoDto;
-import com.entidades.buenSabor.domain.dto.PromocionDetalle.PromocionDetalleCreate;
 import com.entidades.buenSabor.domain.dto.PromocionDetalle.PromocionDetalleDto;
-import com.entidades.buenSabor.domain.dto.PromocionDetalle.PromocionDetalleEdit;
 import com.entidades.buenSabor.domain.entities.ArticuloInsumo;
 import com.entidades.buenSabor.domain.entities.ArticuloManufacturado;
 import com.entidades.buenSabor.domain.entities.PromocionDetalle;
@@ -20,22 +16,16 @@ import java.util.Set;
 
 
 @Mapper(componentModel = "spring", uses = {ArticuloService.class,ArticuloInsumoMapper.class, ArticuloManufacturadoMapper.class})
-public interface PromocionDetalleMapper extends BaseMapper<PromocionDetalle, PromocionDetalleDto, PromocionDetalleCreate, PromocionDetalleEdit>{
+public interface PromocionDetalleMapper extends BaseMapper<PromocionDetalle, PromocionDetalleDto>{
 
     PromocionDetalleMapper INSTANCE = Mappers.getMapper(PromocionDetalleMapper.class);
 
-    //este lo usamos para el mapper de promocion
-    @Named("toEntityCreateSetDetalle")
-    Set<PromocionDetalle> toEntityCreateSetDetalle(Set<PromocionDetalleCreate> dtos);
 
 
     //usamos el parametro expression para indicar que vamos a usar un metodo para definir el mapeo
     @Mapping(target = "insumo", expression = "java(filterArticuloInsumo(source))")
     @Mapping(target = "manufacturado", expression = "java(filterArticuloManufacturado(source))")
     public PromocionDetalleDto toDTO(PromocionDetalle source);
-
-    @Mapping(target = "articulo", source = "idArticulo", qualifiedByName = "getById")
-    public PromocionDetalle toEntityCreate(PromocionDetalleCreate source);
 
     // Este método consulta si el articulo es insumo
     default ArticuloInsumoCategoriaDto filterArticuloInsumo(PromocionDetalle source) {

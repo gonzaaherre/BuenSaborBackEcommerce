@@ -13,16 +13,11 @@ import java.util.Map;
 import java.util.UUID;
 
 public interface ArticuloInsumoService extends BaseService<ArticuloInsumo, Long> {
-    public void changeHabilitado(Long id);
 
     public List<ArticuloInsumo> getAllHabilitados();
     //Imagenes
     // Método para obtener todas las imágenes almacenadas
     ResponseEntity<List<Map<String, Object>>> getAllImagesByArticuloId(Long id);
-    // Método para subir imágenes al sistema
-    ResponseEntity<String> uploadImages(MultipartFile[] files, Long id);
-    // Método para eliminar una imagen por su identificador público y Long
-    ResponseEntity<String> deleteImage(String publicId, Long id);
 
     void decrementStock(Long articuloInsumoId, Integer cantidad);
 

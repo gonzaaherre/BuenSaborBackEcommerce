@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
-public interface ImagenArticuloMapper extends BaseMapper<ImagenArticulo, ImagenDto, ImagenDto, ImagenDto> {
+public interface ImagenArticuloMapper extends BaseMapper<ImagenArticulo, ImagenDto> {
     @Named("toDto")
     ImagenDto toDto(ImagenArticulo source);
 }

@@ -26,22 +26,6 @@ public class CategoriaServiceImp extends BaseServiceImp<Categoria, Long> impleme
     CategoriaRepository categoriaRepository;
 
     @Override
-    public Categoria addArticulo(Long idCategoria, Long idArticulo) {
-        var categoria = baseRepository.getById(idCategoria);
-        var articulo = articuloRepository.getById(idArticulo);
-        categoria.getArticulos().add(articulo);
-        return baseRepository.save(categoria);
-    }
-
-    @Override
-    public Categoria addSubCategoria(Long idCategoria, Categoria subCategoriaToCreate) {
-        var categoria = baseRepository.getById(idCategoria);
-        create(subCategoriaToCreate);
-        categoria.getSubCategorias().add(subCategoriaToCreate);
-        return baseRepository.save(categoria);
-    }
-
-    @Override
     public List<Categoria> listCategoriaInsumos() {
         return categoriaRepository.findByEsInsumoTrue();
     }
@@ -51,19 +35,5 @@ public class CategoriaServiceImp extends BaseServiceImp<Categoria, Long> impleme
         return categoriaRepository.findByEsInsumoFalse();
     }
 
-    @Override
-    public Categoria create(Categoria request){
-        // Se obtienen las sucursales asociadas a la categoría.
-        Set<Sucursal> sucursales = request.getSucursales();
-        // Asignamos la categoría a cada sucursal y las guardamos
-        var entitySaved = baseRepository.save(request);
-        sucursales.stream()
-                .map(sucursal -> {
-                    sucursal.getCategorias().add(request);
-                    return sucursal;
-                })
-                .forEach(sucursalService::create); // Suponiendo que sucursalService tiene un método save para guardar sucursales
-        return entitySaved;
-    }
 
 }
